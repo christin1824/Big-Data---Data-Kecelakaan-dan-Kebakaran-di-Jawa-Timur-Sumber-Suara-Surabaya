@@ -9,7 +9,7 @@ Kebijakan harga BBM selalu memicu reaksi sensitif karena berdampak langsung pada
 ---
 ## Tampilan Dashboard & Hasil Analisis
 
-Dashboard analitik sentimen publik dapat diakses secara lokal melalui tautan berikut: `http://localhost:3000/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab`
+[Klik di Sini untuk Melihat Dashboard Live](https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab)
 
 ### Ringkasan Executive Hasil Analisis Data (N = 489 Komentar):
 1. **Polarisasi Sentimen Tinggi**: Opini didominasi oleh kelompok **Menolak (54.19%)**, diikuti oleh kelompok **Mendukung (38.04%)**, dan sisanya **Netral (7.77%)**.
@@ -138,6 +138,35 @@ Sistem ini menggunakan pengumpulan data otomatis terpusat (*Centralized Ingestio
 
 ##### 3. Top Influence Comment Authors & Engagement
 ![Daftar Top Influencers](03.jpg)
+
+### 6. Langkah Konfigurasi & Cara Mendapatkan Tautan Publik Untuk Dashboard:
+1. Buka dashboard utama Anda di Metabase lokal (`http://localhost:3000`).
+2. Klik ikon **Sharing** (ikon berbentuk gambar gembok atau panah) di pojok kanan bawah panel dashboard untuk mengaktifkan fitur tautan publik bawaan Metabase.
+3. Tambahkan konfigurasi service tunnel baru khusus untuk Metabase di dalam file `docker-compose.yml` Anda:
+   ```yaml
+   metabase-tunnel:
+     image: cloudflare/cloudflared:latest
+     container_name: metabase-cloudflare-tunnel
+     restart: always
+     command: tunnel --url http://metabase:3000
+     depends_on:
+       - metabase
+   ```
+4. Terapkan perubahan container dengan menjalankan perintah berikut secara berurutan di terminal folder project:
+    ```Bash
+    docker compose down
+    docker compose up -d
+     ```
+5. Ambil domain publik acak yang digenerate otomatis oleh Cloudflare dengan memeriksa log kontainer tunnel:
+    ```Bash
+    docker logs metabase-cloudflare-tunnel
+     ```
+6. Cari baris URL .trycloudflare.com di dalam log tersebut, lalu gabungkan domain tersebut dengan path UUID dashboard publik Anda (/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab).
+7. Tautan Akses Live (Cloudflare Tunnel):
+Hasil penggabungan di atas menghasilkan tautan publik live berikut yang siap diakses secara online dari mana saja secara real-time:  
+ ```
+https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab
+```
 
 ## Limitasi Proyek
 
