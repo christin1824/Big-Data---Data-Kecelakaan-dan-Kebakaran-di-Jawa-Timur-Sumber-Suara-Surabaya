@@ -9,8 +9,7 @@ Kebijakan harga BBM selalu memicu reaksi sensitif karena berdampak langsung pada
 ---
 ## Tampilan Dashboard & Hasil Analisis
 
-Dashboard analitik sentimen publik dapat diakses secara lokal melalui tautan berikut:
-👉 `http://localhost:3000/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab`
+Dashboard analitik sentimen publik dapat diakses secara lokal melalui tautan berikut: `http://localhost:3000/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab`
 
 ### Ringkasan Executive Hasil Analisis Data (N = 489 Komentar):
 1. **Polarisasi Sentimen Tinggi**: Opini didominasi oleh kelompok **Menolak (54.19%)**, diikuti oleh kelompok **Mendukung (38.04%)**, dan sisanya **Netral (7.77%)**.
@@ -123,3 +122,30 @@ Sistem ini menggunakan pengumpulan data otomatis terpusat (*Centralized Ingestio
    python scraper_minyak.py
    ```
 3. Buka editor workflow n8n kamu, lalu klik tombol Execute workflow di bagian bawah layar untuk mulai menjalankan seluruh pipeline otomatisasi dari penarikan data hingga pengisian database.
+
+### 5. Analisis dan Visualisasi di Metabase
+* Akses `http://localhost:3000`, lalu hubungkan ke database MongoDB utama Anda, ini punya saya: (`AGUSTINANATANIA@GMAIL.COM`).  
+* Pilih collection `sentimen_db` untuk melihat data hasil pipeline komentar YouTube BBM.
+* Gunakan query editor untuk menyusun chart sentimen (Pie Chart) dan grafik emosi (Horizontal Bar Chart) sesuai rancangan laporan.
+
+#### Tampilan Hasil Dashboard Real-Time:
+
+##### 1. Ringkasan Dashboard Utama
+![Dashboard Metabase Utama](01.jpg)
+
+##### 2. Distribusi Sentimen dan Spektrum Emosi Publik
+![Analisis Grafik Sentimen](02.jpg)
+
+##### 3. Top Influence Comment Authors & Engagement
+![Daftar Top Influencers](03.jpg)
+
+## Limitasi Proyek
+
+* **Klasifikasi Emosi Masih Konvensional**: Pemetaan emosi saat ini baru menggunakan metode *string matching* kasar (mencocokkan kata kunci teks mentah). Belum memakai model *Machine Learning* atau NLP untuk mendeteksi konteks kalimat secara mendalam.
+* **Format Tanggal Belum Standar**: Data waktu komentar dari YouTube masih tersimpan sebagai teks (*string*) apa adanya dari web. Efeknya, fungsionalitas filter rentang waktu (*date range filter*) bawaan di Metabase belum bisa bekerja maksimal.
+* **Ketergantungan pada Struktur DOM YouTube**: Script scraper sangat bergantung pada ID elemen HTML YouTube (`#author-text`, `#content-text`). Jika YouTube melakukan update struktur web, ada risiko selector scraper harus disesuaikan ulang agar tidak zonk.
+* **Metrik Engagement Terbatas**: Analisis baru berfokus pada volume sentimen, emosi, dan jumlah *likes* komentar, belum mengintegrasikan metrik performa video secara makro (seperti rasio *views*, *subscribers*, atau sentimen antar-channel).
+
+## Kesimpulan
+
+Proyek analisis sentimen ini berhasil membangun pipeline Big Data yang mengintegrasikan Selenium Headless (Python) untuk *data ingestion*, MongoDB sebagai penyimpanan database NoSQL, n8n sebagai *orchestrator automated workflow*, hingga visualisasi interaktif lewat Metabase. Meskipun klasifikasi teksnya masih berbasis pencocokan kata kunci sederhana, sistem ini sukses memetakan polarisasi opini (54.19% Menolak vs 38.04% Mendukung) serta dominasi emosi marah dari 489 data komentar BBM secara real-time. Proyek ini dapat menjadi fondasi awal yang solid untuk dikembangkan ke arah analisis berbasis NLP yang lebih kompleks seperti IndoBERT fine-tuned.
