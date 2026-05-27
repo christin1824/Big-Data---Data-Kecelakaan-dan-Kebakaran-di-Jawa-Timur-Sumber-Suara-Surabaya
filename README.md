@@ -164,9 +164,9 @@ Sistem ini menggunakan pengumpulan data otomatis terpusat (*Centralized Ingestio
 6. Cari baris URL .trycloudflare.com di dalam log tersebut, lalu gabungkan domain tersebut dengan path UUID dashboard publik Anda (/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab).
 7. Tautan Akses Live (Cloudflare Tunnel):
 Hasil penggabungan di atas menghasilkan tautan publik live berikut yang siap diakses secara online dari mana saja secara real-time:  
- ```
+
 [https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab](https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab)
-```
+
 
 ## Limitasi Proyek
 
