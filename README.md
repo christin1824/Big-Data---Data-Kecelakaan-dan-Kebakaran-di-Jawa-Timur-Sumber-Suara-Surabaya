@@ -73,12 +73,10 @@ Data yang berhasil dikoleksi langsung distrukturkan ke dalam format array of obj
 ```text
 Big-Data-Sentiment-BBM
 ├── scraper_minyak.py       # Script utama scraping komentar YouTube (Selenium + Flask)
-├── scraper_minyak2.py      # Script cadangan / pengembangan pipeline
 ├── docker-compose.yml      # Konfigurasi container environment (MongoDB, Metabase, n8n)
 ├── cookies.txt             # File kuki "cookies" untuk session (diabaikan oleh git)
 ├── geckodriver.log         # File log driver selenium (diabaikan oleh git)
-├── .gitignore              # Konfigurasi pembatasan upload file sampah/sensitif
-└── README.md               # Dokumentasi utama proyek
+└── .gitignore              # Konfigurasi pembatasan upload file sampah/sensitif
 ```
 ---
 
