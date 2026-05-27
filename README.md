@@ -165,7 +165,7 @@ Sistem ini menggunakan pengumpulan data otomatis terpusat (*Centralized Ingestio
 7. Tautan Akses Live (Cloudflare Tunnel):
 Hasil penggabungan di atas menghasilkan tautan publik live berikut yang siap diakses secara online dari mana saja secara real-time:  
  ```
-https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab
+[https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab](https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab)
 ```
 
 ## Limitasi Proyek
