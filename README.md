@@ -17,6 +17,12 @@ Kebijakan harga BBM selalu memicu reaksi sensitif karena berdampak langsung pada
 
 ---
 
+---
+## PPT Presentasi 
+[Klik di Sini untuk Melihat PPT](https://canva.link/24y6uuwyeux3rt5)
+
+---
+
 ## Fitur Utama & Visualisasi Dashboard Metabase
 
 ### 1. Analisis Sentimen Komentar (Pie Chart / Donut Chart)
