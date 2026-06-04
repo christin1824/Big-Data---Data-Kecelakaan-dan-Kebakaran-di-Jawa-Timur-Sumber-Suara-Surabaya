@@ -21,18 +21,33 @@ services:
       - DB_POSTGRESDB_USER=n8n_user
       - DB_POSTGRESDB_PASSWORD=n8n_pass
       - N8N_TUNNEL=true
-      - WEBHOOK_URL=https://idaho-televisions-encountered-starsmerchant.trycloudflare.com
-  
+      - WEBHOOK_URL=https://even-caring-unheard.ngrok-free.dev/
     volumes:
       - n8n_data:/home/node/.n8n
     depends_on:
       - postgres_n8n
+
+  ngrok-tunnel:
+      image: ngrok/ngrok:latest
+      container_name: bigdata-ngrok-tunnel
+      restart: always
+      environment:
+        - NGROK_AUTHTOKEN=3ECuC7iLg4yfXbfj4gsTP7y7OiU_7Sw1ri8XV6QzfoBv7adey
+      command: http n8n:5678 --url=even-caring-unheard.ngrok-free.dev
+      depends_on:
+        - n8n
+      networks:
+        - bigdata-network
   
-  cloudflare-tunnel:
+  
+
+  metabase-tunnel:
     image: cloudflare/cloudflared:latest
-    container_name: bigdata-cloudflare-tunnel
+    container_name: metabase-cloudflare-tunnel
     restart: always
-    command: tunnel --url http://n8n:5678
+    command: tunnel --url http://metabase:3000
+    depends_on:
+      - metabase
 
   # MongoDB untuk menampung hasil extraksi berita (NoSQL cocok untuk data teks berita)
   mongodb:
@@ -61,3 +76,9 @@ volumes:
   bigdata_metabase_data:
     external: true
 
+ 
+
+# 👇 TAMBAHKAN INI DI BARIS PALING AKHIR (Jangan menjorok ke dalam, sejajar dengan kata services:)
+networks:
+  bigdata-network:
+    driver: bridge

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Metabase Dashboard</title>
+
+    <script defer src="http://192.168.0.101:3000/app/embed.js"></script>
+    
+    <script>
+        function defineMetabaseConfig(config) {
+            window.metabaseConfig = config;
+        }
+        
+        defineMetabaseConfig({
+            "theme": { "preset": "dark" },
+            "isGuest": true,
+            // Diubah ke IP Laptop agar HP tahu ke mana arah server Metabase-nya
+            "instanceUrl": "http://192.168.0.101:3000"
+        });
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #121824; 
+            color: white;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        metabase-dashboard {
+            display: block;
+            width: 100%;
+            height: calc(100vh - 120px); 
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Data Kecelakaan dan Kebakaran di Jawa Timur - Sumber: Suara Surabaya</h1>
+
+    <metabase-dashboard id="my-dashboard" with-title="false" with-downloads="true"></metabase-dashboard>
+
+    <script>
+        // Meminta token langsung ke IP Laptop penyedia backend Express kamu
+        fetch('http://192.168.0.101:5000/api/metabase-token')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Gagal mengambil data dari server backend');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const dashboard = document.getElementById('my-dashboard');
+                dashboard.setAttribute('token', data.token);
+            })
+            .catch(error => {
+                console.error('Gagal mengambil token dari backend:', error);
+            });
+    </script>
+
+</body>
+</html>
