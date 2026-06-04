@@ -9,7 +9,7 @@ Kebijakan harga BBM selalu memicu reaksi sensitif karena berdampak langsung pada
 ---
 ## Tampilan Dashboard & Hasil Analisis
 
-[Klik di Sini untuk Melihat Dashboard Live](https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab)
+[Klik di Sini untuk Melihat Dashboard Live](https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab) (Link belom bisa diklik karena berubah-ubah karena menggunakan domain gratis)
 
 ### Ringkasan Executive Hasil Analisis Data (N = 489 Komentar):
 1. **Polarisasi Sentimen Tinggi**: Opini didominasi oleh kelompok **Menolak (54.19%)**, diikuti oleh kelompok **Mendukung (38.04%)**, dan sisanya **Netral (7.77%)**.
@@ -163,7 +163,7 @@ Sistem ini menggunakan pengumpulan data otomatis terpusat (*Centralized Ingestio
 7. Tautan Akses Live (Cloudflare Tunnel):
 Hasil penggabungan di atas menghasilkan tautan publik live berikut yang siap diakses secara online dari mana saja secara real-time:  
 
-[https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab](https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab)
+[https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab](https://prize-improvements-penguin-firefox.trycloudflare.com/public/dashboard/2d238ed4-babd-493f-95db-288aade7ccab) (Link belom bisa diklik karena berubah-ubah karena menggunakan domain gratis)
 
 
 ## Limitasi Proyek
@@ -172,6 +172,7 @@ Hasil penggabungan di atas menghasilkan tautan publik live berikut yang siap dia
 * **Format Tanggal Belum Standar**: Data waktu komentar dari YouTube masih tersimpan sebagai teks (*string*) apa adanya dari web. Efeknya, fungsionalitas filter rentang waktu (*date range filter*) bawaan di Metabase belum bisa bekerja maksimal.
 * **Ketergantungan pada Struktur DOM YouTube**: Script scraper sangat bergantung pada ID elemen HTML YouTube (`#author-text`, `#content-text`). Jika YouTube melakukan update struktur web, ada risiko selector scraper harus disesuaikan ulang agar tidak zonk.
 * **Metrik Engagement Terbatas**: Analisis baru berfokus pada volume sentimen, emosi, dan jumlah *likes* komentar, belum mengintegrasikan metrik performa video secara makro (seperti rasio *views*, *subscribers*, atau sentimen antar-channel).
+* **Link claudflare masih berubah-ubah karena gratis** : Link belom bisa diklik karena berubah-ubah karena menggunakan domain gratis
 
 ## Kesimpulan
 
